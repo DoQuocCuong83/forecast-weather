@@ -13,7 +13,7 @@ export const getTodayByNameRequest = (name) => {
 }
 
 export const getTodayByLocationRequest = (lat, lon) => {
-    return axiosInstance.get("api.openweathermap.org/data/2.5/weather", {
+    return axiosInstance.get("http://api.openweathermap.org/data/2.5/weather", {
         params: {
             lat: lat,
             lon: lon,

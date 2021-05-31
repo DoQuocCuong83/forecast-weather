@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ClockContainer, HeaderContainer } from "./style";
-import { changeLocation, setTest2, getTodayByNameAction } from "../../store/actions";
 
 const Clock = () => {
 
@@ -31,7 +30,7 @@ const Header = (props) => {
                     <Clock />
                     <div className="main-navigation">
                         <ul className="menu">
-                            <li className="menu-item current-menu-item"><a>Home</a></li>
+                            <li className="menu-item current-menu-item"><a href="/">Home</a></li>
                             <li className="menu-item"><a href="/">Nhận thông báo</a></li>
                             <li className="menu-item"><a href="/">Đăng nhập Facebook</a></li>
                             <li className="menu-item"><a href="/">Đăng nhập Google</a></li>
@@ -42,15 +41,5 @@ const Header = (props) => {
         </HeaderContainer>
     );
 }
-
-const mapStateToProps = (state) => ({
-    ...state
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    getTodayByName: name => getTodayByNameAction(name, dispatch),
-    changeLocation: location => dispatch(changeLocation(location)),
-    setTest2: () => dispatch(setTest2()),
-})
 
 export default React.memo(Header);

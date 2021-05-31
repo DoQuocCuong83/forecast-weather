@@ -1,19 +1,35 @@
 const stateDefault = {
-    location: null,
-    test: false,
+    weatherToday: {},
+    loadingStatus: true,
+    errorStatus: false,
+    successStatus: false,
+    modeShow: false,
+    weatherSevenDay: {},
 }
 
 const reducer = (state = stateDefault, action) => {
     switch (action.type) {
-        case "CHANGE_LOCATION":
+        case "CHANGE_WEATHER_TODAY":
             return {
                 ...state,
-                location: action.payload
+                weatherToday: action.payload,
             }
-        case "SET_TEST":
+        case "CHANGE_LOADING_STATUS": case "CHANGE_ERROR_STATUS": case "CHANGE_SUCCESS_STATUS" :
             return {
                 ...state,
-                test: !state.test
+                loadingStatus: action.loadingStatus,
+                errorStatus: action.errorStatus,
+                successStatus: action.successStatus,
+            }
+        case "CHANGE_MODE_SHOW":
+            return {
+                ...state,
+                modeShow: !state.modeShow,
+            }
+        case "CHANGE_WEATHER_SEVEN_DAY":
+            return {
+                ...state,
+                weatherSevenDay: action.payload,
             }
         default:
             return state;
