@@ -1,12 +1,12 @@
 import React from "react";
-import { SearchContainer } from "./style";
+import { SearchContainer} from "./style";
 
 const Search = (props) => {
 
     const { inputRef } = props;
 
-    const { handleChangeInput, handleSubmit} = props;
-    
+    const { handleChangeInput, handleSubmit } = props;
+
     return (
         <SearchContainer>
             <div className="hero">

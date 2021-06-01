@@ -22,7 +22,8 @@ const Clock = () => {
     );
 }
 
-const Header = (props) => {
+const Header = () => {
+
     return (
         <HeaderContainer>
             <div className="site-header">
@@ -31,9 +32,6 @@ const Header = (props) => {
                     <div className="main-navigation">
                         <ul className="menu">
                             <li className="menu-item current-menu-item"><a href="/">Home</a></li>
-                            <li className="menu-item"><a href="/">Nhận thông báo</a></li>
-                            <li className="menu-item"><a href="/">Đăng nhập Facebook</a></li>
-                            <li className="menu-item"><a href="/">Đăng nhập Google</a></li>
                         </ul>
                     </div>
                 </div>

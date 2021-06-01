@@ -5,6 +5,7 @@ import Information from "./information";
 import Footer from "./footer";
 import { connect } from "react-redux";
 import { getWeatherByLocationAction, getWeatherByNameAction, changeModeShow, changeLoadingStatus } from "../store/actions";
+import Fade from "@material-ui/core/Fade";
 
 const ForecastWeather = (props) => {
 
@@ -46,13 +47,13 @@ const ForecastWeather = (props) => {
             getWeatherByName("Hanoi");
         }
         navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
-    }, [])
+    }, [getWeatherByLocation, getWeatherByName])
 
     const handleChangeInput = e => setValueInput(e.target.value);
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (valueInput.length == 0) inputRef.current.focus();
+        if (valueInput.length === 0) inputRef.current.focus();
         else {
             changeLoadingStatus();
             getWeatherByName(valueInput);
@@ -60,16 +61,14 @@ const ForecastWeather = (props) => {
     }
 
     return (
-        <div className="site-content">
-            <Header />
-            <Search
-                inputRef={inputRef}
-                handleChangeInput={handleChangeInput}
-                handleSubmit={handleSubmit}
-            />
-            { loadingStatus ? <div>Loading ....</div> : null}
-            { errorStatus ? <div>Error</div> : null}
-            { successStatus ?
+        <Fade in={true}>
+            <div className="site-content">
+                <Header />
+                <Search
+                    inputRef={inputRef}
+                    handleChangeInput={handleChangeInput}
+                    handleSubmit={handleSubmit}
+                />
                 <Information
                     day={day}
                     date={date}
@@ -77,10 +76,13 @@ const ForecastWeather = (props) => {
                     modeShow={modeShow}
                     weatherSevenDay={weatherSevenDay}
                     changeModeShow={changeModeShow}
+                    loadingStatus={loadingStatus}
+                    errorStatus={errorStatus}
+                    successStatus={successStatus}
                 />
-                : null}
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </Fade>
     );
 }
 

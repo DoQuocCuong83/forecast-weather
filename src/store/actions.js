@@ -69,7 +69,7 @@ const getWeather = (data, dispatch) => {
         response.daily.pop();
         response.daily.shift();
         let weatherSevenDay = response.daily.map(value => {
-            today != 6 ? today++ : today = 0;
+            today !== 6 ? today++ : today = 0;
             return {
                 day: days[today],
                 icon: configIcon[value.weather[0].id],

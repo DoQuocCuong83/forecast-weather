@@ -1,12 +1,16 @@
-import React, { lazy, Suspense } from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import ForecastWeather from "../application";
+import { LoadingPage } from "../baseUI/loading-page";
+
+const ForecastWeather = React.lazy(() => import('../application'));
 
 const Routes = () => {
     return (
         <Router>
             <Route path="/" exact>
-                <ForecastWeather />
+                <Suspense fallback={<LoadingPage />}>
+                    <ForecastWeather />
+                </Suspense>
             </Route>
         </Router>
     );
